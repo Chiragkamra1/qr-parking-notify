@@ -1,11 +1,13 @@
 import os
-from dotenv import load_dotenv
-
-
-# Load environment variables from .env file
-load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "mysql+pymysql://parking_user:parking19@localhost/parking_db")
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://parking_user:parking19@localhost/parking_db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.getenv("SECRET_KEY", "mysupersecretkey")
+    DEFAULT_OWNER_EMAIL = "rahulgargp@gmail.com"
+
+    # Email settings
+    MAIL_SERVER = "smtp.gmail.com"
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = "normaltesting1@gmail.com"
+    MAIL_PASSWORD = "pkqb gyzp cxcr kspy"

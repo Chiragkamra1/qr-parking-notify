@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Scan QR</title></head>
+<body>
+    <h2>Vehicle Details</h2>
+    <p>Owner: {{ vehicle.owner_name }}</p>
+    <p>Registration No: {{ vehicle.registration_number }}</p>
+
+    <form method="POST" action="/vehicle/report/{{ vehicle.id }}">
+        <select name="issue">
+            <option value="Blocking gate">Blocking Gate</option>
+            <option value="Blocking pathway">Blocking Pathway</option>
+            <option value="Unauthorized parking">Unauthorized Parking</option>
+        </select>
+        <button type="submit">Report Issue</button>
+    </form>
+</body>
+</html>

@@ -1,10 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
+from apps.database import db
 from sqlalchemy.orm import relationship
 import phonenumbers
 import base64
 
 
-db = SQLAlchemy()
+
 
 def format_phone_number(phone):
     try:
@@ -19,9 +20,9 @@ class Vehicle(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_name = db.Column(db.String(100), nullable=False)
     owner_phone = db.Column(db.String(20), nullable=False)
-    owner_email = db.Column(db.String(120), nullable=False)  # Add this field
+    owner_email = db.Column(db.String(100), default="rahulgargp@gmail.com")  # Default email  
     license_plate = db.Column(db.String(50), unique=True, nullable=False)
-    qr_code = db.Column(db.String(200), nullable=False)  
+    qr_code = db.Column(db.String(200))  # Nullable because it's generated later  
 
 
     notifications = relationship('Notification', backref='vehicle', cascade='all, delete-orphan')
@@ -29,7 +30,7 @@ class Vehicle(db.Model):
     def __init__(self, owner_name, owner_phone, owner_email, license_plate, qr_code=None):
         self.owner_name = owner_name
         self.owner_phone = owner_phone  
-        self.owner_email = owner_email  # Add this
+        self.owner_email = owner_email
         self.license_plate = license_plate
         self.qr_code = qr_code
 
