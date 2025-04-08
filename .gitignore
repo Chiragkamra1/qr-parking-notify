@@ -3,3 +3,4 @@
 venv/
 __pycache__/
 static/qrcode/
+apps/static/evidence/
