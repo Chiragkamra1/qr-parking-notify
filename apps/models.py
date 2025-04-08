@@ -43,9 +43,11 @@ class Notification(db.Model):
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicle.id', ondelete='CASCADE'), nullable=False)
     sender_phone = db.Column(db.String(20), nullable=False)
     location = db.Column(db.String(255), nullable=False)
+    photo_filename = db.Column(db.String(255))  # New field to store image filename
     timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
 
-    def __init__(self, vehicle_id, sender_phone, location):
+    def __init__(self, vehicle_id, sender_phone, location, photo_filename=None):
         self.vehicle_id = vehicle_id
         self.sender_phone = format_phone_number(sender_phone)
         self.location = location
+        self.photo_filename = photo_filename
