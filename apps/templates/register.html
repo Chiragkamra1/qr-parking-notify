@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head><title>Register Vehicle</title></head>
+<head>
+    <title>Register Vehicle</title>
+</head>
 <body>
     <h2>Register Vehicle</h2>
-    <form method="POST">
-        <input type="text" name="owner_name" placeholder="Owner Name" required><br>
-        <input type="text" name="registration_number" placeholder="Vehicle Number" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="phone" placeholder="Phone Number" required><br>
+    <form id="register-form" method="POST">
+        <label>Owner Name:</label><br>
+        <input type="text" name="owner_name" required><br><br>
+        
+        <label>License Plate:</label><br>
+        <input type="text" name="license_plate" required><br><br>
+        
+        <label>Phone Number:</label><br>
+        <input type="text" name="owner_phone" required><br><br>
+        
         <button type="submit">Register</button>
     </form>
+
+    <script>
+        document.getElementById("register-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+        
+            const formData = new FormData(this);
+        
+            fetch("/vehicle/register", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error); // Show specific error from backend
+                } else if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                } else {
+                    alert(data.message || "Registered successfully");
+                }
+            })
+             .catch(err => {
+                 console.error(err);
+                 alert("An unexpected error occurred during registration.");
+             });
+        });
+    </script>
 </body>
 </html>

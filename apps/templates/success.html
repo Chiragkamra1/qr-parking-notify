@@ -1,0 +1,45 @@
+<!-- templates/success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Submitted</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ Complaint Submitted Successfully!</h1>
+        {% if complaint_id %}
+            <p>Your complaint ID: <strong>{{ complaint_id }}</strong></p>
+            <p>Track it here: <a id="complaintLink" href="{{ url_for('complaint.get_complaint', complaint_id=complaint_id, _external=True) }}" target="_blank">{{ url_for('complaint.get_complaint', complaint_id=complaint_id, _external=True) }}</a></p>
+
+            <button onclick="copyLink()">📋 Copy Link</button>
+
+            <div id="qrcode"></div>
+        {% endif %}
+    </div>
+
+    <script>
+        function copyLink() {
+            const link = document.getElementById("complaintLink").href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Link copied to clipboard!");
+            });
+        }
+
+        const url = document.getElementById("complaintLink").href;
+        QRCode.toCanvas(document.getElementById("qrcode"), url, function (error) {
+            if (error) console.error(error);
+        });
+    </script>
+</body>
+</html>

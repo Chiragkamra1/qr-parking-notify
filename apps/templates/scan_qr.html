@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head><title>Scan QR</title></head>
-<body>
-    <h2>Vehicle Details</h2>
-    <p>Owner: {{ vehicle.owner_name }}</p>
-    <p>Registration No: {{ vehicle.registration_number }}</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Scanned</title>
+    <script>
+        // Automatically redirect to complaint page after extracting the plate
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            const plate = params.get("plate");
 
-    <form method="POST" action="/vehicle/report/{{ vehicle.id }}">
-        <select name="issue">
-            <option value="Blocking gate">Blocking Gate</option>
-            <option value="Blocking pathway">Blocking Pathway</option>
-            <option value="Unauthorized parking">Unauthorized Parking</option>
-        </select>
-        <button type="submit">Report Issue</button>
-    </form>
+            if (plate) {
+                window.location.href = `/complaint/form?plate=${plate}`;
+            } else {
+                document.getElementById("message").innerText = "Invalid or missing license plate in QR code.";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div style="text-align:center; margin-top: 100px;">
+        <h3 id="message">Scanning QR Code...</h3>
+    </div>
 </body>
 </html>

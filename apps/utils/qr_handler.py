@@ -1,12 +1,19 @@
 import qrcode
 import os
+from flask import current_app
 
-def generate_qr(vehicle_id):
-    qr_data = f"http://127.0.0.1:5000/scan/{vehicle_id}"
-    qr = qrcode.make(qr_data)
-    
-    qr_path = f"static/qrcodes/{vehicle_id}.png"
-    os.makedirs("static/qrcodes", exist_ok=True)
-    qr.save(qr_path)
+def generate_qr(license_plate):
+    folder_name = "static/qrcodes"  # ✅ Match this with the template
+    os.makedirs(folder_name, exist_ok=True)
 
-    return qr_path
+    filename = f"{license_plate}.png"
+    full_path = os.path.join(folder_name, filename)
+
+    img = qrcode.make(license_plate)
+    img.save(full_path)
+
+    current_app.logger.info(f"QR generated for {license_plate}")
+
+    print(f"QR code saved at: {full_path}")
+
+    return filename  # ✅ Return just the file name, not the full path

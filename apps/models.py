@@ -3,6 +3,7 @@ from apps.database import db
 from sqlalchemy.orm import relationship
 import phonenumbers
 import base64
+from sqlalchemy import Boolean
 
 
 
@@ -45,6 +46,7 @@ class Notification(db.Model):
     location = db.Column(db.String(255), nullable=False)
     photo_filename = db.Column(db.String(255))  # New field to store image filename
     timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
+    acknowledged = db.Column(db.Boolean, default=False)
 
     def __init__(self, vehicle_id, sender_phone, location, photo_filename=None):
         self.vehicle_id = vehicle_id

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code for Your Vehicle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        .qr-container {
+            border: 2px dashed #888;
+            padding: 20px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .print-btn {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🎉 Registration Successful!</h2>
+    <p>Here is your QR code. You can print it and paste it on your car.</p>
+
+    {% if vehicle.qr_code %}
+        <div class="qr-container">
+            <h2>QR Code for {{ vehicle.license_plate }}</h2>
+            <img src="{{ url_for('static', filename='qrcodes/' + qr_filename) }}" alt="QR Code">
+            <p><strong>License Plate:</strong> {{ vehicle.license_plate }}</p>
+            <a class="print-btn" href="{{ url_for('static', filename='qrcodes/' + qr_filename) }}" download>
+                🖨️ Print QR
+            </a>
+        </div>
+    {% else %}
+        <p>No QR Code available.</p>
+    {% endif %}
+</body>
+</html>

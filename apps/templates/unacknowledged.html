@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unacknowledged Complaints</title>
+</head>
+<body>
+    <h2>📋 Unacknowledged Complaints</h2>
+    {% if complaints %}
+        <ul>
+        {% for complaint in complaints %}
+            <li>
+                <strong>{{ complaint.license_plate }}</strong> - {{ complaint.location }}<br>
+                {% if complaint.photo_url %}
+                    <a href="{{ complaint.photo_url }}" target="_blank">View Photo</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No unacknowledged complaints found.</p>
+    {% endif %}
+</body>
+</html>
