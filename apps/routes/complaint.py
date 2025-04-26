@@ -5,6 +5,8 @@ from apps.database import db
 from apps.models import Notification, Vehicle
 from apps.utils import send_email
 from flask import render_template
+import time
+
 
 complaint_bp = Blueprint("complaint", __name__)
 UPLOAD_FOLDER = os.path.join("static", "evidence")
@@ -37,9 +39,10 @@ def submit_complaint():
     photo_filename = None
     if photo and allowed_file(photo.filename):
         filename = secure_filename(photo.filename)
-        photo_path = os.path.join(UPLOAD_FOLDER, filename)
+        unique_filename = f"{int(time.time())}_{filename}"
+        photo_path = os.path.join(UPLOAD_FOLDER, unique_filename)
         photo.save(photo_path)
-        photo_filename = filename
+        photo_filename = unique_filename
 
     complaint = Notification(
         vehicle_id=vehicle.id,
