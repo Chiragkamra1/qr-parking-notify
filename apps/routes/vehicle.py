@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify, current_app, render_template, red
 from apps.database import db
 from apps.models import Vehicle
 from apps.utils import generate_qr, send_email
+from apps.app import mail
 import os
 
 vehicle_bp = Blueprint("vehicle", __name__)
@@ -47,6 +48,7 @@ def register_vehicle():
         # Send email
         try:
             send_email(
+                mail,
                 new_vehicle.owner_email,
                 "Vehicle Registered",
                 f"""Your vehicle has been successfully registered.\n

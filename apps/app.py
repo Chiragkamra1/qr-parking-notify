@@ -1,20 +1,21 @@
+# app.py
+
 from flask import Flask
 from flask_migrate import Migrate
 from flask_mail import Mail
 from apps.database import db
 from apps.config import Config
 import logging
-
+from apps.utils import generate_qr, send_email
 
 mail = Mail()
-
 
 def create_app():
     app = Flask(__name__)
 
     # Set up minimal logging
     handler = logging.StreamHandler()
-    handler.setLevel(logging.INFO)  # Only INFO and above will show
+    handler.setLevel(logging.INFO)
     formatter = logging.Formatter('[%(levelname)s] %(message)s')
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
@@ -25,7 +26,7 @@ def create_app():
 
     # Initialize extensions
     db.init_app(app)
-    mail.init_app(app)
+    mail.init_app(app)  # ✅ initialize mail properly
     Migrate(app, db)
 
     # Register Blueprints
