@@ -60,17 +60,17 @@ def submit_complaint():
         image_url = f"{host_url}/static/evidence/{photo_filename}" if photo_filename else "No photo attached"
 
         email_body = f"""
-    Dear {vehicle.owner_name},
+        Dear {vehicle.owner_name},
 
-    Someone has reported a parking issue involving your vehicle (License Plate: {license_plate}).
+        Someone has reported a parking issue involving your vehicle (License Plate: {license_plate}).
 
-    📍 Location: {location}
-    🆔 Complaint ID: {complaint.id}
-    🖼️ Evidence: {image_url}
+        📍 Location: {location}
+        🆔 Complaint ID: {complaint.id}
+        🖼️ Evidence: {image_url}
 
-    Please check and take necessary action. Your personal contact details have not been shared.
+        Please check and take necessary action. Your personal contact details have not been shared.
 
-    – QR Parking Notify System
+        – QR Parking Notify System
         """
 
         send_email(
@@ -78,19 +78,13 @@ def submit_complaint():
             email_subject,
             email_body
         )
-        print("Email sent to:", vehicle.owner_email)
+        current_app.logger.info(f"Email sent to: {vehicle.owner_email}")
 
     except Exception as e:
-        print("Failed to send email:", e)
-            
-    # send_email(
-    #     vehicle.owner_email,
-    #     email_subject,
-    #     email_body
-    # )  # Optional: log this properly
-    # print("Email sent to:", vehicle.owner_email)
+        current_app.logger.error(f"Failed to send email: {str(e)}")
 
-    return jsonify({"message": "Complaint submitted successfully"}), 201
+    # ✅ Instead of returning jsonify, return success page with complaint ID
+    return render_template("success.html", complaint_id=complaint.id)
 
 @complaint_bp.route("/acknowledge/<int:complaint_id>", methods=["POST"])
 def acknowledge_complaint(complaint_id):

@@ -1,11 +1,7 @@
-# utils.py
-
 import os
 import qrcode
 from flask import current_app
 from flask_mail import Message
-
-# No Mail() object here!
 
 # QR Code Utilities
 def generate_qr(license_plate):
@@ -23,8 +19,11 @@ def generate_qr(license_plate):
     return filename
 
 # Email Utilities
-def send_email(mail, to_email, subject, body):
+def send_email(to_email, subject, body):
     try:
+        # Get the Mail() object from current app
+        mail = current_app.extensions["mail"]
+
         msg = Message(
             subject=subject,
             sender=current_app.config.get("MAIL_USERNAME"),
