@@ -21,7 +21,7 @@ def generate_qr(license_plate):
 # Email Utilities
 def send_email(to_email, subject, body):
     try:
-        # Get the Mail() object from current app
+        # Always get the Mail instance from the app
         mail = current_app.extensions["mail"]
 
         msg = Message(
