@@ -65,56 +65,57 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 
 # 🧩 Project Structure
 
-apps/
-    ├── app.py             # Main Flask app
-    ├── database.py        # Database setup (SQLAlchemy)
-    ├── models.py          # Database models (Vehicle, Notification)
-    ├── utils.py           # Utility functions (send_email, generate_qr)
-    ├── routes/
-    │    ├── vehicle.py    # Routes related to vehicle registration
-     │    └── complaint.py  # Routes related to complaints
-    static/
-     ├── evidence/          # Uploaded complaint photos
-    templates/
-     ├── register.html      # Vehicle registration form
-     ├── complaint.html     # Complaint submission form
-     ├── success.html       # Success page after complaint
-     ├── qr_display.html    # Display generated QR code
-    README.md
-    requirements.txt
+	apps/
+		├── app.py             # Main Flask app
+		├── database.py        # Database setup (SQLAlchemy)
+		├── models.py          # Database models (Vehicle, Notification)
+		├── utils.py           # Utility functions (send_email, generate_qr)
+		├── routes/
+		│    ├── vehicle.py    # Routes related to vehicle registration
+		│    └── complaint.py  # Routes related to complaints
+		static/
+		├── evidence/          # Uploaded complaint photos
+		templates/
+		├── register.html      # Vehicle registration form
+		├── complaint.html     # Complaint submission form
+		├── success.html       # Success page after complaint
+		├── qr_display.html    # Display generated QR code
+		README.md
+		requirements.txt
 
 
 
 ⸻
 
 # 🚀 How to Run Locally
-	1.	Clone the repository:
+1.	Clone the repository:
 
-git clone https://github.com/yourusername/qr-parking-notify.git
-cd qr-parking-notify
-
-
-	2.	Set up a virtual environment:
-
-python -m venv venv
-source venv/bin/activate    # Linux / Mac
-venv\Scripts\activate       # Windows
+	git clone https://github.com/Chiragkamra1/qr-parking-notify.git
+	cd qr-parking-notify
 
 
-	3.	Install dependencies:
+2.	Set up a virtual environment:
 
-pip install -r requirements.txt
+	python -m venv venv
+	source venv/bin/activate    # Linux / Mac
+	venv\Scripts\activate       # Windows
 
 
-	4.	Configure environment variables:
-Create a .env file or set these in app.py:
-	•	SECRET_KEY
-	•	EMAIL_SERVER (SMTP server)
-	•	EMAIL_PORT
-	•	EMAIL_USERNAME
-	•	EMAIL_PASSWORD
-	•	DEFAULT_OWNER_EMAIL (used as vehicle owner email)
-	5.	Initialize the database:
+3.	Install dependencies:
+
+	pip install -r requirements.txt
+
+
+4.	Configure environment variables:
+	Create a .env file or set these in app.py:
+		•	SECRET_KEY
+		•	EMAIL_SERVER (SMTP server)
+		•	EMAIL_PORT
+		•	EMAIL_USERNAME
+		•	EMAIL_PASSWORD
+		•	DEFAULT_OWNER_EMAIL (used as vehicle owner email)
+
+5.	Initialize the database:
 
     flask shell
     >>> from apps.database import db
@@ -122,11 +123,11 @@ Create a .env file or set these in app.py:
     >>> exit()
 
 
-	6.	Run the app:
+6.	Run the app:
 
-flask run --port=5002
+	flask run --port=5002
 
-The app will be available at: http://localhost:5002/
+	The app will be available at: http://localhost:5002/
 
 ⸻
 
