@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify, current_app
 import os
 from werkzeug.utils import secure_filename
-from apps.database import db
-from apps.models import Notification, Vehicle
-from apps.utils import send_email
+from ..database import db
+from ..models import Notification, Vehicle
+from ..utils import send_email
 from flask import render_template
 import time
 

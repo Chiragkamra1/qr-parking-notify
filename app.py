@@ -3,10 +3,10 @@
 from flask import Flask
 from flask_migrate import Migrate
 from flask_mail import Mail
-from apps.database import db
-from apps.config import Config
+from .database import db
+from .config import Config
 import logging
-from apps.utils import generate_qr, send_email
+from .utils import generate_qr, send_email
 
 mail = Mail()
 
@@ -31,10 +31,10 @@ def create_app():
     Migrate(app, db)
 
     # Register Blueprints
-    from apps.routes.vehicle import vehicle_bp
+    from .routes.vehicle import vehicle_bp
     app.register_blueprint(vehicle_bp, url_prefix="/vehicle")
 
-    from apps.routes.complaint import complaint_bp
+    from .routes.complaint import complaint_bp
     app.register_blueprint(complaint_bp, url_prefix="/complaint")
 
     return app

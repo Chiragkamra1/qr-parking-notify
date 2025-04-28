@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from apps.database import db
+from .database import db
 from sqlalchemy.orm import relationship
 import phonenumbers
 import base64

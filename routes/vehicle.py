@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, current_app, render_template, redirect, url_for
-from apps.database import db
-from apps.models import Vehicle
-from apps.utils import generate_qr, send_email
+from ..database import db
+from ..models import Vehicle
+from ..utils import generate_qr, send_email
 # from apps.app import mail
 import os
 
