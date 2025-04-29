@@ -76,19 +76,19 @@ Meanwhile, vehicle owners:
 		│    └── complaint.py  			# Routes related to complaints
 		static/
 		├── evidence/          			# Uploaded complaint photos
-		├── qrcodes/		   			# Generated QR-Codes
+		├── qrcodes/		   		# Generated QR-Codes
 		templates/
 		├── register.html      			# Vehicle registration form
 		├── complaint.html     			# Complaint submission form
 		├── success.html       			# Success page after complaint
 		├── qr_display.html    			# Display generated QR code
 		├──	acknowledge_success.html	# Confirmation page after owner acknowledges a complaint
-		├──	error.html					# Displays error messages or fallback on failure
-		├──	scan_qr.html				# Page shown when QR is scanned to initiate complaint
-		├──	unacknowledged.html			# Admin/owner view of unresolved complaints
+		├──	error.html			# Displays error messages or fallback on failure
+		├──	scan_qr.html			# Page shown when QR is scanned to initiate complaint
+		├──	unacknowledged.html		# Admin/owner view of unresolved complaints
 
-		README.md						# Documentation file
-		requirements.txt				# Python dependencies
+		README.md				# Documentation file
+		requirements.txt		        # Python dependencies
 
 
 
