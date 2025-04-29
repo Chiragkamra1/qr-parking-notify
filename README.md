@@ -89,15 +89,16 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 
 # 🚀 How to Run Locally
 1.	Clone the repository:
-	git clone https://github.com/Chiragkamra1/qr-parking-notify.git
-	cd qr-parking-notify
+	```bash
+		git clone https://github.com/Chiragkamra1/qr-parking-notify.git
+		cd qr-parking-notify
 
 
 2.	Set up a virtual environment:
-
-		python -m venv venv
-		source venv/bin/activate    # Linux / Mac
-		venv\Scripts\activate       # Windows
+    ```bash
+	python -m venv venv
+	source venv/bin/activate    # Linux / Mac
+	venv\Scripts\activate       # Windows
 
 
 3.	Install dependencies:
@@ -117,9 +118,10 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 6.	Initialize the database:
 
 	flask shell
-		>>> from apps.database import db
-		>>> db.create_all()
-		>>> exit()
+	```bash
+	>>> from apps.database import db
+	>>> db.create_all()
+	>>> exit()
 
 
 
