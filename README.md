@@ -15,36 +15,37 @@ Welcome to the QR Parking Notify System – a simple yet powerful solution to pa
 Parking issues such as blocking gates, wrong parking, or obstructing driveways are common, but people hesitate to address them directly due to privacy concerns.
 
 # 🔵 Challenges:
-	•	Vehicle owners are hard to contact without revealing personal numbers.
-	•	Parking disputes escalate without easy communication.
-	•	No way to alert a car owner anonymously and securely.
+
+-   Vehicle owners are hard to contact without revealing personal numbers.
+-   Parking disputes escalate without easy communication.
+-   No way to alert a car owner anonymously and securely.
 
 ⸻
 
 # 💡 Solution
 
 The QR Parking Notify System allows anyone to:
-	•	Scan a QR code placed on a vehicle.
-	•	Report parking issues anonymously with location and optional photo evidence.
-	•	Instantly notify the vehicle owner via email without exposing anyone’s private details.
+-   Scan a QR code placed on a vehicle.
+-   Report parking issues anonymously with location and optional photo evidence.
+-   Instantly notify the vehicle owner via email without exposing anyone’s private details.
 
 Meanwhile, vehicle owners:
-	•	Receive quick alerts.
-	•	Can acknowledge that they are coming to move their vehicle.
-	•	Stay anonymous — no phone number or name sharing!
+-   Receive quick alerts.
+-   Can acknowledge that they are coming to move their vehicle.
+-   Stay anonymous — no phone number or name sharing!
 
 ⸻
 
 # 🛠️ Features
 
-Feature	Description
-Vehicle Registration	Owners register their vehicle and generate a QR code.
-QR Code Generation	Each registered vehicle has a unique scannable QR linked to it.
-Complaint Submission	Anyone can report a parking issue by scanning the QR and filling a simple form.
-Email Notification	Owners receive an automated email with complaint details and optional photo evidence.
-Acknowledge Mechanism	Owners can acknowledge complaints with a single click.
-Photo Upload	Complainants can attach a photo as proof (optional).
-Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledged complaints, etc.
+### Feature	Description
+-   Vehicle Registration	Owners register their vehicle and generate a QR code.
+-   QR Code Generation	Each registered vehicle has a unique scannable QR linked to it.
+-   Complaint Submission	Anyone can report a parking issue by scanning the QR and filling a simple form.
+-   Email Notification	Owners receive an automated email with complaint details and optional photo evidence.
+-   Acknowledge Mechanism	Owners can acknowledge complaints with a single click.
+-   Photo Upload	Complainants can attach a photo as proof (optional).
+-   Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledged complaints, etc.
 
 
 
@@ -52,14 +53,14 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 
 # 📷 Workflow
 1.	Vehicle Owner:
-	    •	Registers vehicle with name, license plate, and phone number.
-	    •	Receives a QR code to print and place on their car.
+	-   Registers vehicle with name, license plate, and phone number.
+	-   Receives a QR code to print and place on their car.
 2.	Complainant:
-	    •	Scans the QR code → opens a complaint form.
-	    •	Submits location, phone number, and optional photo.
+	-   Scans the QR code → opens a complaint form.
+	-   Submits location, phone number, and optional photo.
 3.	System:
-	    •	Notifies the owner via email with the complaint details.
-	    •	Owner can acknowledge if they’re coming to resolve it.
+	-   Notifies the owner via email with the complaint details.
+	-   Owner can acknowledge if they’re coming to resolve it.
 
 ⸻
 
@@ -108,12 +109,12 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 
 4.	Configure environment variables:
 	Create a .env file or set these in app.py:
-	•	SECRET_KEY
-	•	EMAIL_SERVER (SMTP server)
-	•	EMAIL_PORT
-	•	EMAIL_USERNAME
-	•	EMAIL_PASSWORD
-	•	DEFAULT_OWNER_EMAIL (used as vehicle owner email)
+	-	SECRET_KEY
+	-	EMAIL_SERVER (SMTP server)
+	-	EMAIL_PORT
+	-	EMAIL_USERNAME
+	-	EMAIL_PASSWORD
+	-	DEFAULT_OWNER_EMAIL (used as vehicle owner email)
 
 6.	Initialize the database:
 
@@ -134,11 +135,12 @@ Admin API Routes	Retrieve complaints, filter by license plate, view unacknowledg
 ⸻
 
 # 📈 Future Enhancements
-	•	WhatsApp Notification Integration 📱
-	•	Admin Dashboard to view all complaints
-	•	OTP/Authentication for complainants
-	•	Multi-language support
-	•	Rate limiting on complaint submissions
+
+-	WhatsApp Notification Integration 📱
+-	Admin Dashboard to view all complaints
+-	OTP/Authentication for complainants
+-	Multi-language support
+-   Rate limiting on complaint submissions
 
 ⸻
 
